@@ -9,7 +9,6 @@ var BancoDados = {
         return db.query("SELECT * FROM disciplina", null, callback);
     },
 
-
     getAlunos: function (callback) {
         return db.query("SELECT * FROM alunos",
             null, callback);
