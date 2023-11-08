@@ -26,7 +26,7 @@ var BancoDados = {
     },
 
     insertAlunoTurma: function (alunoTurma, callback) {
-        return db.query("INSERT INTO turma_alunos (id_turma, id_aluno) VALUES (0,0)", [alunoTurma.id_turma, alunoTurma.id_aluno], callback);
+        return db.query("INSERT INTO turma_alunos (id_turma, id_aluno) VALUES (?,?)", [alunoTurma.id_turma, alunoTurma.id_aluno], callback);
     },
 
     insertTurma: function (turma, callback) {

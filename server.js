@@ -77,7 +77,7 @@ app.post('/inseriralunoturma', function (req, res) {
       if (err) {
          res.json(err);
       } else {
-         func.decrementaLimiteVagas(req.body.id_turma, function (err, rs) {
+         func.decrementaLimite(req.body.id_turma, function (err, rs) {
             if (err) {
                res.json(err);
             } else {
