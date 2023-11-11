@@ -25,12 +25,16 @@ var BancoDados = {
         return db.query("SELECT alunos.id_aluno, alunos.nome_aluno, alunos.sobrenome_aluno FROM alunos LEFT JOIN turma_alunos ON alunos.id_aluno = turma_alunos.id_aluno WHERE turma_alunos.id_turma != ? OR turma_alunos.id_turma IS NULL", [idTurma], callback);
     },
 
+    getNomeAluno: function (idAluno, callback) {
+        return db.query("SELECT nome_aluno FROM alunos WHERE id_aluno = ?", [idAluno], callback);
+    },
+
     insertAlunoTurma: function (alunoTurma, callback) {
         return db.query("INSERT INTO turma_alunos (id_turma, id_aluno) VALUES (?,?)", [alunoTurma.id_turma, alunoTurma.id_aluno], callback);
     },
 
     insertTurma: function (turma, callback) {
-        return db.query("INSERT INTO turmas (id_turma, id_disciplina, id_prof, turno, dia, limite_vagas) VALUES (0,0,0,?,?,0)", [turma.id_turma, turma.id_disciplina, turma.id_prof, turma.turno, turma.dia, turma.limite_vagas], callback);
+        return db.query("INSERT INTO turmas (id_turma, id_disciplina, id_prof, turno, dia, limite_vagas) VALUES (?,?,?,?,?,?)", [turma.id_turma, turma.id_disciplina, turma.id_prof, turma.turno, turma.dia, turma.limite_vagas], callback);
     },
 
     deleteAlunoTurma: function (alunoTurma, callback) {

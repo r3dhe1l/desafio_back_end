@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="/assets/css/cadastro.css">
+    <link rel="stylesheet" href="/assets/css/home.css">
+    <link rel="stylesheet" href="/assets/css/reset.css">
+
+
+</head>
+
+<body>
+    <div class="backgroundContainer">
+
+        <div id="mainContainer">
+
+            <div id="modalContainer">
+
+                <img id="logo" src="./assets/images/Vector1DesenhoBonito.png" alt="" draggable="false">
+                <br>
+                <br>
+
+                <div id="modalInputContainer">
+                    <form id="form">
+
+                        <label for="id">
+                            <input class="loginInput" id="id" inputmode="numeric" placeholder="Matrícula" required>
+                        </label>
+
+                        <br>
+
+                        <label for="password">
+                            <input class="loginInput" id="password" type="password" placeholder="Senha" required>
+                        </label>
+
+                        <br>
+                        <br>
+
+                        <select id="selecao" name="selecao" required>
+                            <option value="" selected disabled hidden>Selecione uma opção</option>
+                            <option value="Aluno">Aluno</option>
+                            <option value="Funcionario">Funcionário</option>
+                        </select>
+
+                        <br>
+                        <br>
+
+                        <input type="submit" id="login" value="Logar" placeholder="ENTRAR"
+                            onclick="logon(event)">
+
+                        <div id="forgot">
+                            <br>
+                            <span><a href="#">Esqueci minha senha</a></span>
+                            <br>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script src="./login.js"></script>
+<script src="./main.js"></script>
+
+
+</html>

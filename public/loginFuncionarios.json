@@ -1,0 +1,21 @@
+{
+    "funcionario": {
+        "login": [
+            {
+                "id": "11111",
+                "password": "11111",
+                "nome": "Gustavo"
+            },
+            {
+                "id": "22222",
+                "password": "22222",
+                "nome": "Maria"
+            },
+            {
+                "id": "33333",
+                "password": "33333",
+                "nome": "Jessica"
+            }
+        ]
+    }
+}

@@ -1,0 +1,71 @@
+.backgroundContainer {
+  width: 100%;
+  background: url(../images/emil-widlund-xrbbXIXAWY0-unsplash@2x.png) 100% 100% no-repeat;
+  margin: 0 auto;
+  background-size:  1912px 1366px;
+}
+
+#mainContainer {
+  max-width: 85rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 713px;
+}
+
+#modalContainer {
+  display: flex;
+  width: 433px;
+  height: 446px;
+  border-radius: 8px;
+  border: 1px solid #70707040;
+  background: white;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginInput {
+  display: flex;
+  justify-content: space-around;
+  background: #f1f3f5;
+  width: 353px;
+  height: 51px;
+  border-radius: 4px;
+  border: none;
+  text-indent: 1rem;
+  font-size: 16px;
+  color: #868e96;
+}
+
+#id {
+  background: url(../images/Grupo37.svg) no-repeat padding-box #f1f3f5 20rem;
+}
+
+#password {
+  background: url(../images/Grupo36.svg) no-repeat padding-box #f1f3f5 20rem;
+}
+
+#forgot a {
+  display: flex;
+  align-content: flex-start;
+  align-items: flex-start;
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+}
+
+#login {
+  background: #ffc501;
+  border: transparent;
+  border-radius: 4px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 700;
+  height: 40px;
+  width: 100%;
+}

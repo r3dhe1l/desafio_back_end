@@ -10,10 +10,10 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var func = require('./sqlfuncoes');
+var db = require('./sqlfuncoes');
 
 app.get('/professores', function (req, res) {
-   func.getProfessor(function (err, rows) {
+   db.getProfessor(function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -23,7 +23,7 @@ app.get('/professores', function (req, res) {
 });
 
 app.get('/disciplinas', function (req, res) {
-   func.getDisciplina(function (err, rows) {
+   db.getDisciplina(function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -33,7 +33,7 @@ app.get('/disciplinas', function (req, res) {
 });
 
 app.get('/turmas', function (req, res) {
-   func.getTurmas(function (err, rows) {
+   db.getTurmas(function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -43,7 +43,7 @@ app.get('/turmas', function (req, res) {
 });
 
 app.get('/turmascomvaga', function (req, res) {
-   func.getTurmasComVaga(function (err, rows) {
+   db.getTurmasComVaga(function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -52,8 +52,8 @@ app.get('/turmascomvaga', function (req, res) {
    });
 });
 
-app.get('/alunosnaturma', function (req, res) {
-   func.getAlunosDaTurmas(function (err, rows) {
+app.get('/alunosnaturma/:tid', function (req, res) {
+   db.getAlunosDaTurmas(req.params.tid, function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -62,8 +62,18 @@ app.get('/alunosnaturma', function (req, res) {
    });
 });
 
-app.get('/alunosforaturma', function (req, res) {
-   func.getAlunosForaTurma(function (err, rows) {
+app.get('/alunosforaturma/:tid', function (req, res) {
+   db.getAlunosForaTurma(req.params.tid, function (err, rows) {
+      if (err) {
+         res.json(err);
+      } else {
+         res.json(rows);
+      }
+   });
+});
+
+app.get('/nomealuno/:aid', function (req, res) {
+   db.getNomeAluno(req.params.aid, function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -73,11 +83,11 @@ app.get('/alunosforaturma', function (req, res) {
 });
 
 app.post('/inseriralunoturma', function (req, res) {
-   func.insertAlunoTurma(req.body, function (err, rs) {
+   db.insertAlunoTurma(req.body, function (err, rs) {
       if (err) {
          res.json(err);
       } else {
-         func.decrementaLimite(req.body.id_turma, function (err, rs) {
+         db.decrementaLimite(req.body.id_turma, function (err, rs) {
             if (err) {
                res.json(err);
             } else {
@@ -90,7 +100,8 @@ app.post('/inseriralunoturma', function (req, res) {
 });
 
 app.post('/criarturma', function (req, res) {
-   func.insertTurma(req.body, function (err, rs) {
+   db.insertTurma(req.body, function (err, rs) {
+      console.log(req.body);
       if (err) {
          res.json(err);
       } else {
@@ -101,7 +112,7 @@ app.post('/criarturma', function (req, res) {
 });
 
 app.delete('/deletarturma', function (req, res) {
-   func.deleteTurma(req.body, function (err, rs) {
+   db.deleteTurma(req.body, function (err, rs) {
       if (err) {
          res.json(err);
       } else {
@@ -112,11 +123,11 @@ app.delete('/deletarturma', function (req, res) {
 });
 
 app.delete('/deletaralunodaturma', function (req, res) {
-   func.deleteAlunoTurma(req.body, function (err, rs) {
+   db.deleteAlunoTurma(req.body, function (err, rs) {
       if (err) {
          res.json(err);
       } else {
-         func.incrementaLimite(req.body.id_turma, function (err, rs) {
+         db.incrementaLimite(req.body.id_turma, function (err, rs) {
             if (err) {
                res.json(err);
             } else {
