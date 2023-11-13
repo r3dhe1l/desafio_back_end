@@ -44,10 +44,9 @@ function criarTurma() {
         },
         body: JSON.stringify(turma),
     })
-        .then(response => response.json())
-        .then(data => {
-            alert('Turma Criada');
-            console.log('Success:', data);
+        .then((response) => response.text())
+        .then((responseText) => {
+            alert('Turma Criada' + responseText);
             window.location.reload();
         })
         .catch((error) => {

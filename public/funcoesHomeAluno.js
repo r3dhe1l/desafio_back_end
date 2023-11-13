@@ -4,7 +4,6 @@ window.onload = function () {
 
 function carregarTurmasLivres() {
     const id_aluno = localStorage.getItem('currentUser');
-    console.log(id_aluno);
     fetch('/turmascomvaga/' + id_aluno)
         .then(response => response.json())
         .then(turmas => {
@@ -48,7 +47,7 @@ function incluirAluno(id_turma, id_aluno) {
     })
         .then((response) => response.text())
         .then((responseText) => {
-            alert('Resposta: ' + responseText);
+            alert('Matriculado' + responseText);
         })
         .then(() => {
             carregarTurmasLivres();

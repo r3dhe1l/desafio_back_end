@@ -14,7 +14,6 @@ async function logon(event) {
     const userType = document.getElementById('selecao').value;
     const selecao = userType == 'Aluno' ? dataA.login : dataF.login;
     await localStorage.setItem('currentUser', id);
-    console.log(localStorage.getItem('currentUser'));
 
     for (let i = 0; i < selecao.length; i++) {
         if (id == selecao[i].id && password == selecao[i].password) {

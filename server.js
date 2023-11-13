@@ -102,7 +102,7 @@ app.post('/inseriralunoturma', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
-               res.end('{ "msg": "Inserido com sucesso" }');
+               res.end('');
             }
          });
       }
@@ -111,12 +111,11 @@ app.post('/inseriralunoturma', function (req, res) {
 
 app.post('/criarturma', function (req, res) {
    db.insertTurma(req.body, function (err, rs) {
-      console.log(req.body);
       if (err) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('{ "msg": "Turma criada" }');
+         res.end('');
       }
    });
 });
@@ -127,7 +126,7 @@ app.delete('/deletarturma/:tid', function (req, res) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('{ "msg": "Turma deletada" }');
+         res.end('');
       }
    });
 });
@@ -142,7 +141,7 @@ app.delete('/deletaralunodaturma/:tid/:aid', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
-               res.end('{ "msg": "Aluno deletado da turma" }');
+               res.end('');
             }
          });
       }

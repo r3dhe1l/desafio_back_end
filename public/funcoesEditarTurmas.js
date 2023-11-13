@@ -92,6 +92,10 @@ function excluirTurma(id_turma) {
                             'Content-Type': 'application/json'
                         }
                     })
+                        .then((response) => response.text())
+                        .then((responseText) => {
+                            alert('Turma excluída' + responseText);
+                        })
                         .then(() => {
                             window.location.reload();
                         })
@@ -115,7 +119,9 @@ function excluirAluno(id_turma, id_aluno, reload = true) {
     })
         .then((response) => response.text())
         .then((responseText) => {
-            alert('Resposta: ' + responseText);
+            if (reload) {
+                alert('Aluno excluído da turma' + responseText);
+            }
         })
         .then(() => {
             if (reload) {
@@ -144,7 +150,7 @@ function incluirAluno(id_turma, id_aluno) {
     })
         .then((response) => response.text())
         .then((responseText) => {
-            alert('Resposta: ' + responseText);
+            alert('Aluno inserio na turma' + responseText);
         })
         .then(() => {
             carregarTurmas();

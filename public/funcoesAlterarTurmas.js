@@ -4,7 +4,6 @@ window.onload = function () {
 
 function carregarTurmasMatriculadas() {
     const id_aluno = localStorage.getItem('currentUser');
-    console.log(id_aluno);
     fetch('/turmasdoaluno/' + id_aluno)
         .then(response => response.json())
         .then(turmas => {
@@ -41,7 +40,7 @@ function excluirAluno(id_turma, id_aluno) {
     })
         .then((response) => response.text())
         .then((responseText) => {
-            alert('Resposta: ' + responseText);
+            alert('Desmatriculado' + responseText);
         })
         .then(() => {
             carregarTurmasMatriculadas();
