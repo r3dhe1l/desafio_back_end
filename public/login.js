@@ -13,6 +13,8 @@ async function logon(event) {
     const password = document.getElementById("password").value;
     const userType = document.getElementById("selecao").value;
     const selecao = userType == "Aluno" ? dataA.login : dataF.login;
+    await localStorage.setItem("currentUser", id);
+    console.log(localStorage.getItem("currentUser"));
 
     for (let i = 0; i < selecao.length; i++) {
         if (id == selecao[i].id && password == selecao[i].password) {
@@ -23,8 +25,6 @@ async function logon(event) {
             alert("Seu login e/ou senha não estão corretos.\nTente novamente.");
         }
     }
-    // const userLogged = localStorage.setItem("currentUser", id);
-    // localStorage.getItem("currentUser").value = userLogged;
 }
 
 function nomeAluno(id) {

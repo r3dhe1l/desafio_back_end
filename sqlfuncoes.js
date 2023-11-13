@@ -18,8 +18,8 @@ var BancoDados = {
         `, null, callback);
     },
 
-    getTurmasComVaga: function (callback) {
-        return db.query("SELECT * FROM turmas WHERE limite_vagas > 0", null, callback);
+    getTurmasComVaga: function (idAluno, callback) {
+        return db.query('SELECT turmas.id_turma, disciplinas.nome_disciplina AS disciplina, CONCAT(professores.nome_prof, " ", professores.sobrenome_prof) AS professor, turmas.dia, turmas.turno, turmas.limite_vagas FROM turmas INNER JOIN disciplinas ON turmas.id_disciplina = disciplinas.id_disciplina INNER JOIN professores ON turmas.id_prof = professores.id_prof LEFT JOIN turma_alunos ON turmas.id_turma = turma_alunos.id_turma AND turma_alunos.id_aluno = ? WHERE turma_alunos.id_aluno IS NULL AND turmas.limite_vagas > 0', [idAluno], callback);
     },
 
     getAlunosDaTurmas: function (idTurma, callback) {
@@ -28,6 +28,10 @@ var BancoDados = {
 
     getAlunosForaTurma: function (idTurma, callback) {
         return db.query('SELECT alunos.id_aluno, alunos.nome_aluno, alunos.sobrenome_aluno FROM alunos LEFT JOIN turma_alunos ON alunos.id_aluno = turma_alunos.id_aluno AND turma_alunos.id_turma = ? WHERE turma_alunos.id_turma IS NULL', [idTurma], callback);
+    },
+
+    getTurmasDoAluno: function (idAluno, callback) {
+        return db.query('SELECT turmas.id_turma, disciplinas.nome_disciplina AS disciplina, CONCAT(professores.nome_prof, " ", professores.sobrenome_prof) AS professor, turmas.dia, turmas.turno, turmas.limite_vagas FROM turmas INNER JOIN disciplinas ON turmas.id_disciplina = disciplinas.id_disciplina INNER JOIN professores ON turmas.id_prof = professores.id_prof INNER JOIN turma_alunos ON turmas.id_turma = turma_alunos.id_turma WHERE turma_alunos.id_aluno = ?', [idAluno], callback);
     },
 
     getNomeAluno: function (idAluno, callback) {

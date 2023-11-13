@@ -42,8 +42,8 @@ app.get('/turmas', function (req, res) {
    });
 });
 
-app.get('/turmascomvaga', function (req, res) {
-   db.getTurmasComVaga(function (err, rows) {
+app.get('/turmascomvaga/:aid', function (req, res) {
+   db.getTurmasComVaga(req.params.aid, function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -64,6 +64,16 @@ app.get('/alunosnaturma/:tid', function (req, res) {
 
 app.get('/alunosforaturma/:tid', function (req, res) {
    db.getAlunosForaTurma(req.params.tid, function (err, rows) {
+      if (err) {
+         res.json(err);
+      } else {
+         res.json(rows);
+      }
+   });
+});
+
+app.get('/turmasdoaluno/:aid', function (req, res) {
+   db.getTurmasDoAluno(req.params.aid, function (err, rows) {
       if (err) {
          res.json(err);
       } else {
