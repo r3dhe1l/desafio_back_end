@@ -52,10 +52,10 @@ function mostrarAlunos(id_turma) {
                 item.textContent = 'Matrícula: ' + aluno.id_aluno + ', Nome: ' + aluno.nome_aluno + ' ' + aluno.sobrenome_aluno;
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Excluir';
-                deleteButton.style.width = '80px';  // Altere para o valor desejado
-                deleteButton.style.height = '15px';  // Altere para o valor desejado
-                deleteButton.style.fontSize = '12px';  // Diminui o tamanho da fonte
-                deleteButton.style.marginLeft = '10px';  // Adiciona espaço à esquerda do botão
+                deleteButton.style.width = '80px';
+                deleteButton.style.height = '15px';
+                deleteButton.style.fontSize = '12px';
+                deleteButton.style.marginLeft = '10px';
                 deleteButton.addEventListener('click', function () {
                     excluirAluno(id_turma, aluno.id_aluno);
                 });
@@ -64,10 +64,10 @@ function mostrarAlunos(id_turma) {
             });
             const addButton = document.createElement('button');
             addButton.textContent = 'Adicionar Alunos';
-            addButton.style.width = '150px';  // Altere para o valor desejado
-            addButton.style.height = '30px';  // Altere para o valor desejado
-            addButton.style.fontSize = '12px';  // Diminui o tamanho da fonte
-            addButton.style.marginTop = '10px';  // Adiciona espaço acima do botão
+            addButton.style.width = '150px';
+            addButton.style.height = '30px';
+            addButton.style.fontSize = '12px';
+            addButton.style.marginTop = '10px';
             addButton.addEventListener('click', function () {
                 alunosForaTurma(id_turma);
             });
