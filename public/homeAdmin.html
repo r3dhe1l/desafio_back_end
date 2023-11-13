@@ -22,15 +22,26 @@
     </header>
 
     <div>
-        <select id="disciplinas"></select>
+        <label for="disciplinas">Disciplina</label>
+        <br>
+        <select id="disciplinas">
+            <option selected="selected" disabled hidden>Selecione a disciplina</option>
+        </select>
     </div>
     <br>
     <div>
-        <select id="professores"></select>
+        <label for="professores">Professor</label>
+        <br>
+        <select id="professores">
+            <option selected="selected" disabled hidden>Selecione o professor</option>
+        </select>
     </div>
     <br>
     <div>
+        <label for="dias">Dia</label>
+        <br>
         <select id="dias">
+            <option selected="selected" disabled hidden>Selecione o dia</option>
             <option value="segunda">Segunda-Feira</option>
             <option value="terca">Terça-Feira</option>
             <option value="quarta">Quarta-Feira</option>
@@ -40,7 +51,10 @@
     </div>
     <br>
     <div>
+        <label for="turnos">Turno</label>
+        <br>
         <select id="turnos">
+            <option selected="selected" disabled hidden>Selecione o turno</option>
             <option value="manha">Manhã</option>
             <option value="tarde">Tarde</option>
             <option value="noite">Noite</option>
@@ -49,7 +63,7 @@
     <br>
     <div>
         <label for="vagas">Limite de vagas:</label>
-        <input type="number" id="vagas" name="vagas" min="1" required>
+        <input inputmode="numeric" id="vagas" name="vagas" min="1" required>
     </div>
     <br>
     <button onclick="criarTurma()">Criar Turma</button>
