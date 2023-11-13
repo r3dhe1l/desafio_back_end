@@ -4,7 +4,9 @@ window.onload = function () {
 
 function carregarTurmas() {
     fetch('/turmas')
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+        })
         .then(turmas => {
             const tabelaTurmas = document.getElementById('tabelaTurmas').getElementsByTagName('tbody')[0];
             tabelaTurmas.innerHTML = '';
@@ -39,17 +41,19 @@ function carregarTurmas() {
 };
 
 function mostrarAlunos(id_turma) {
-    fetch(`/alunosnaturma/` + id_turma)
-        .then(response => response.json())
+    fetch('/alunosnaturma/' + id_turma)
+        .then(response => {
+            response.json()
+        })
         .then(alunos => {
             const listaAlunos = document.getElementById('listaAlunos');
             listaAlunos.innerHTML = '';
             const title = document.createElement('h2');
-            title.textContent = `Lista de Alunos da Turma: ` + id_turma;
+            title.textContent = 'Lista de Alunos da Turma: ' + id_turma;
             listaAlunos.appendChild(title);
             alunos.forEach(aluno => {
                 const item = document.createElement('div');
-                item.textContent = `Aluno ID: ${aluno.id_aluno}, Nome: ${aluno.nome_aluno} ${aluno.sobrenome_aluno}`;
+                item.textContent = 'Matrícula do Aluno: ' + aluno.nome_aluno + ' ' + aluno.sobrenome_aluno;
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Excluir';
                 deleteButton.style.width = '80px';  // Altere para o valor desejado
@@ -74,18 +78,20 @@ function mostrarAlunos(id_turma) {
             listaAlunos.appendChild(addButton);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
 function excluirTurma(id_turma) {
-    fetch(`/alunosnaturma/` + id_turma)
-        .then(response => response.json())
+    fetch('/alunosnaturma/' + id_turma)
+        .then(response => {
+            response.json()
+        })
         .then(alunos => {
             const promises = alunos.map(aluno => excluirAluno(id_turma, aluno.id_aluno, false));
             Promise.all(promises)
                 .then(() => {
-                    fetch(`/deletarturma/` + id_turma, {
+                    fetch('/deletarturma/' + id_turma, {
                         method: 'DELETE',
                         headers: {
                             Accept: 'application/json',
@@ -96,12 +102,12 @@ function excluirTurma(id_turma) {
                             window.location.reload();
                         })
                         .catch((error) => {
-                            console.error('Error:', error);
+                            console.error(error);
                         });
                 });
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -113,9 +119,8 @@ function excluirAluno(id_turma, id_aluno, reload = true) {
             'Content-Type': 'application/json'
         }
     })
-        .then((response) => response.text())
-        .then((responseText) => {
-            alert('Resposta: ' + responseText);
+        .then((response) => {
+            response.text()
         })
         .then(() => {
             if (reload) {
@@ -124,7 +129,7 @@ function excluirAluno(id_turma, id_aluno, reload = true) {
             }
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -142,36 +147,38 @@ function incluirAluno(id_turma, id_aluno) {
         },
         body: JSON.stringify(alunoTurma)
     })
-        .then((response) => response.text())
-        .then((responseText) => {
-            alert('Resposta: ' + responseText);
+        .then((response) => {
+            response.text()
         })
+
         .then(() => {
             carregarTurmas();
             mostrarAlunos(id_turma);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
 function alunosForaTurma(id_turma) {
-    fetch(`/alunosforaturma/` + id_turma)
-        .then(response => response.json())
+    fetch('/alunosforaturma/' + id_turma)
+        .then(response => {
+            response.json()
+        })
         .then(alunos => {
             const alunoSelect = document.getElementById('alunoSelect');
             alunoSelect.innerHTML = '';
             alunos.forEach(aluno => {
                 const option = document.createElement('option');
                 option.value = aluno.id_aluno;
-                option.textContent = `Aluno ID: ${aluno.id_aluno}, Nome: ${aluno.nome_aluno} ${aluno.sobrenome_aluno}`;
+                option.textContent = 'Matrícula: ' + aluno.id_aluno + ' Nome: ' + aluno.nome_aluno + ' ' + aluno.sobrenome_aluno;
                 alunoSelect.appendChild(option);
             });
             document.getElementById('modal').style.display = 'block';
             document.getElementById('confirmButton').dataset.turma = id_turma;
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 

@@ -1,6 +1,8 @@
 window.onload = function () {
     fetch('/disciplinas')
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+        })
         .then(disciplinas => {
             const select = document.getElementById('disciplinas');
             disciplinas.forEach(disciplina => {
@@ -10,20 +12,26 @@ window.onload = function () {
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error(error)
+        });
 
     fetch('/professores')
-        .then(response => response.json())
+        .then(response => {
+            response.json()
+        })
         .then(professores => {
             const select = document.getElementById('professores');
             professores.forEach(professor => {
                 const option = document.createElement('option');
                 option.value = professor.id_prof;
-                option.text = professor.nome_prof + " " + professor.sobrenome_prof;
+                option.text = professor.nome_prof + ' ' + professor.sobrenome_prof;
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => {
+            console.error(error)
+        });
 };
 
 function criarTurma() {
@@ -44,13 +52,14 @@ function criarTurma() {
         },
         body: JSON.stringify(turma),
     })
-        .then(response => response.json())
-        .then(data => {
+        .then(response => {
+            response.json()
+        })
+        .then(() => {
             alert('Turma Criada');
-            console.log('Success:', data);
             window.location.reload();
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 }
