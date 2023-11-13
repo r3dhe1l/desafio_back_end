@@ -10,7 +10,7 @@ window.onload = function () {
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error(error));
 
     fetch('/professores')
         .then(response => response.json())
@@ -23,7 +23,7 @@ window.onload = function () {
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error(error));
 };
 
 function criarTurma() {
@@ -51,6 +51,6 @@ function criarTurma() {
             window.location.reload();
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 }

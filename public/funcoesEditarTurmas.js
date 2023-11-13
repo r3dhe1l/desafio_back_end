@@ -74,7 +74,7 @@ function mostrarAlunos(id_turma) {
             listaAlunos.appendChild(addButton);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -96,12 +96,12 @@ function excluirTurma(id_turma) {
                             window.location.reload();
                         })
                         .catch((error) => {
-                            console.error('Error:', error);
+                            console.error(error);
                         });
                 });
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -124,7 +124,7 @@ function excluirAluno(id_turma, id_aluno, reload = true) {
             }
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -151,7 +151,7 @@ function incluirAluno(id_turma, id_aluno) {
             mostrarAlunos(id_turma);
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 
@@ -171,7 +171,7 @@ function alunosForaTurma(id_turma) {
             document.getElementById('confirmButton').dataset.turma = id_turma;
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
 

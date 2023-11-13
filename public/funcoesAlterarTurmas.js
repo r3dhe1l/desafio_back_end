@@ -47,6 +47,6 @@ function excluirAluno(id_turma, id_aluno) {
             carregarTurmasMatriculadas();
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error(error);
         });
 };
