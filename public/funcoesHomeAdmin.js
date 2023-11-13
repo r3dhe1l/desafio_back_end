@@ -19,7 +19,7 @@ window.onload = function () {
             professores.forEach(professor => {
                 const option = document.createElement('option');
                 option.value = professor.id_prof;
-                option.text = professor.nome_prof + " " + professor.sobrenome_prof;
+                option.text = professor.nome_prof + ' ' + professor.sobrenome_prof;
                 select.appendChild(option);
             });
         })

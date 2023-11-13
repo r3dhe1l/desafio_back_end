@@ -39,17 +39,17 @@ function carregarTurmas() {
 };
 
 function mostrarAlunos(id_turma) {
-    fetch(`/alunosnaturma/` + id_turma)
+    fetch('/alunosnaturma/' + id_turma)
         .then(response => response.json())
         .then(alunos => {
             const listaAlunos = document.getElementById('listaAlunos');
             listaAlunos.innerHTML = '';
             const title = document.createElement('h2');
-            title.textContent = `Lista de Alunos da Turma: ` + id_turma;
+            title.textContent = 'Lista de Alunos da Turma: ' + id_turma;
             listaAlunos.appendChild(title);
             alunos.forEach(aluno => {
                 const item = document.createElement('div');
-                item.textContent = `Aluno ID: ${aluno.id_aluno}, Nome: ${aluno.nome_aluno} ${aluno.sobrenome_aluno}`;
+                item.textContent = 'Matrícula: ' + aluno.id_aluno + ', Nome: ' + aluno.nome_aluno + ' ' + aluno.sobrenome_aluno;
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = 'Excluir';
                 deleteButton.style.width = '80px';  // Altere para o valor desejado
@@ -79,13 +79,13 @@ function mostrarAlunos(id_turma) {
 };
 
 function excluirTurma(id_turma) {
-    fetch(`/alunosnaturma/` + id_turma)
+    fetch('/alunosnaturma/' + id_turma)
         .then(response => response.json())
         .then(alunos => {
             const promises = alunos.map(aluno => excluirAluno(id_turma, aluno.id_aluno, false));
             Promise.all(promises)
                 .then(() => {
-                    fetch(`/deletarturma/` + id_turma, {
+                    fetch('/deletarturma/' + id_turma, {
                         method: 'DELETE',
                         headers: {
                             Accept: 'application/json',
@@ -156,7 +156,7 @@ function incluirAluno(id_turma, id_aluno) {
 };
 
 function alunosForaTurma(id_turma) {
-    fetch(`/alunosforaturma/` + id_turma)
+    fetch('/alunosforaturma/' + id_turma)
         .then(response => response.json())
         .then(alunos => {
             const alunoSelect = document.getElementById('alunoSelect');
@@ -164,7 +164,7 @@ function alunosForaTurma(id_turma) {
             alunos.forEach(aluno => {
                 const option = document.createElement('option');
                 option.value = aluno.id_aluno;
-                option.textContent = `Aluno ID: ${aluno.id_aluno}, Nome: ${aluno.nome_aluno} ${aluno.sobrenome_aluno}`;
+                option.textContent = 'Matrícula: ' + aluno.id_aluno + ', Nome: ' + aluno.nome_aluno + ' ' + aluno.sobrenome_aluno;
                 alunoSelect.appendChild(option);
             });
             document.getElementById('modal').style.display = 'block';
