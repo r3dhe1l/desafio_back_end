@@ -27,7 +27,7 @@ window.onload = function () {
 };
 
 function criarTurma() {
-    const  turma = {
+    const turma = {
         id_turma: Math.floor(Math.random() * 1000000),
         id_disciplina: document.getElementById('disciplinas').value,
         id_prof: document.getElementById('professores').value,
@@ -36,12 +36,10 @@ function criarTurma() {
         limite_vagas: document.getElementById('vagas').value
     };
 
-    console.log(turma);
-
     fetch('/criarturma', {
         method: 'POST',
         headers: {
-            
+            Accept: 'application/json',
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(turma),
@@ -50,6 +48,7 @@ function criarTurma() {
         .then(data => {
             alert('Turma Criada');
             console.log('Success:', data);
+            window.location.reload();
         })
         .catch((error) => {
             console.error('Error:', error);

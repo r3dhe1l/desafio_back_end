@@ -10,7 +10,12 @@ var BancoDados = {
     },
 
     getTurmas: function (callback) {
-        return db.query("SELECT * FROM turmas", null, callback);
+        return db.query(`
+        SELECT turmas.id_turma, disciplinas.nome_disciplina AS disciplina, CONCAT(professores.nome_prof, ' ', professores.sobrenome_prof) AS professor, turmas.dia, turmas.turno, turmas.limite_vagas
+        FROM turmas
+        INNER JOIN disciplinas ON turmas.id_disciplina = disciplinas.id_disciplina
+        INNER JOIN professores ON turmas.id_prof = professores.id_prof
+        `, null, callback);
     },
 
     getTurmasComVaga: function (callback) {
@@ -22,7 +27,7 @@ var BancoDados = {
     },
 
     getAlunosForaTurma: function (idTurma, callback) {
-        return db.query("SELECT alunos.id_aluno, alunos.nome_aluno, alunos.sobrenome_aluno FROM alunos LEFT JOIN turma_alunos ON alunos.id_aluno = turma_alunos.id_aluno WHERE turma_alunos.id_turma != ? OR turma_alunos.id_turma IS NULL", [idTurma], callback);
+        return db.query('SELECT alunos.id_aluno, alunos.nome_aluno, alunos.sobrenome_aluno FROM alunos LEFT JOIN turma_alunos ON alunos.id_aluno = turma_alunos.id_aluno AND turma_alunos.id_turma = ? WHERE turma_alunos.id_turma IS NULL', [idTurma], callback);
     },
 
     getNomeAluno: function (idAluno, callback) {
@@ -37,8 +42,8 @@ var BancoDados = {
         return db.query("INSERT INTO turmas (id_turma, id_disciplina, id_prof, turno, dia, limite_vagas) VALUES (?,?,?,?,?,?)", [turma.id_turma, turma.id_disciplina, turma.id_prof, turma.turno, turma.dia, turma.limite_vagas], callback);
     },
 
-    deleteAlunoTurma: function (alunoTurma, callback) {
-        return db.query("DELETE FROM turma_alunos WHERE id_turma = ? AND id_aluno = ?", [alunoTurma.id_turma, alunoTurma.id_aluno], callback);
+    deleteAlunoTurma: function (id_turma, id_aluno, callback) {
+        return db.query("DELETE FROM turma_alunos WHERE id_turma = ? AND id_aluno = ?", [id_turma, id_aluno], callback);
     },
 
     deleteTurma: function (idTurma, callback) {

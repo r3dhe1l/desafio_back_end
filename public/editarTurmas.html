@@ -1,0 +1,58 @@
+<html lang="EN">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen" />
+
+
+    <title>Cadastro Turma</title>
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="./assets/images/Vector1DesenhoBonito.png" width="61" alt="desenho bonitinho">
+        <h2>Cadastrar Turma</h2>
+        <nav>
+            <ul>
+                <li><a href="homeAdmin.html">Cadastrar Turma</a></li>
+                <li><a href="editarTurmas.html">Editar Turmas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <table id="tabelaTurmas">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Disciplina</th>
+                <th>Professor</th>
+                <th>Dia</th>
+                <th>Turno</th>
+                <th>Vagas</th>
+                <th>Alunos</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <br>
+
+    <div id="listaAlunos"></div>
+
+    <div id="modal"
+        style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
+        <div style="background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%;">
+            <h2>Adicionar Aluno</h2>
+            <select id="alunoSelect"></select>
+            <button id="confirmButton">Confirmar</button>
+            <button id="cancelButton">Cancelar</button>
+        </div>
+    </div>
+
+</body>
+
+<script src="./funcoesEditarTurmas.js"></script>
+
+</html>

@@ -111,8 +111,8 @@ app.post('/criarturma', function (req, res) {
    });
 });
 
-app.delete('/deletarturma', function (req, res) {
-   db.deleteTurma(req.body, function (err, rs) {
+app.delete('/deletarturma/:tid', function (req, res) {
+   db.deleteTurma(req.params.tid, function (err, rs) {
       if (err) {
          res.json(err);
       } else {
@@ -122,12 +122,12 @@ app.delete('/deletarturma', function (req, res) {
    });
 });
 
-app.delete('/deletaralunodaturma', function (req, res) {
-   db.deleteAlunoTurma(req.body, function (err, rs) {
+app.delete('/deletaralunodaturma/:tid/:aid', function (req, res) {
+   db.deleteAlunoTurma(req.params.tid, req.params.aid, function (err, rs) {
       if (err) {
          res.json(err);
       } else {
-         db.incrementaLimite(req.body.id_turma, function (err, rs) {
+         db.incrementaLimite(req.params.tid, function (err, rs) {
             if (err) {
                res.json(err);
             } else {
