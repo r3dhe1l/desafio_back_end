@@ -4,10 +4,9 @@ window.onload = function () {
 
 function carregarTurmasLivres() {
     const id_aluno = localStorage.getItem('currentUser');
+    console.log(id_aluno);
     fetch('/turmascomvaga/' + id_aluno)
-        .then(response => {
-            response.json()
-        })
+        .then(response => response.json())
         .then(turmas => {
             const turmasLivres = document.getElementById('turmasLivres').getElementsByTagName('tbody')[0];
             turmasLivres.innerHTML = '';
@@ -47,8 +46,9 @@ function incluirAluno(id_turma, id_aluno) {
         },
         body: JSON.stringify(alunoTurma)
     })
-        .then((response) => {
-            response.text()
+        .then((response) => response.text())
+        .then((responseText) => {
+            alert('Resposta: ' + responseText);
         })
         .then(() => {
             carregarTurmasLivres();

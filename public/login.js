@@ -1,19 +1,20 @@
 function enter(userType, nome) {
-    alert('Seja bem-vindo ' + nome + '!');
+    alert("Seja bem-vindo " + nome + "!");
     if (userType == 'Aluno') {
-        window.location.href = 'homeAluno.html';
+        window.location.href = "homeAluno.html";
     } else if (userType == 'Funcionario') {
-        window.location.href = 'homeAdmin.html';
+        window.location.href = "homeAdmin.html";
     }
 }
 
 async function logon(event) {
     event.preventDefault();
-    const id = document.getElementById('id').value;
-    const password = document.getElementById('password').value;
-    const userType = document.getElementById('selecao').value;
-    const selecao = userType == 'Aluno' ? dataA.login : dataF.login;
-    await localStorage.setItem('currentUser', id);
+    const id = document.getElementById("id").value;
+    const password = document.getElementById("password").value;
+    const userType = document.getElementById("selecao").value;
+    const selecao = userType == "Aluno" ? dataA.login : dataF.login;
+    await localStorage.setItem("currentUser", id);
+    console.log(localStorage.getItem("currentUser"));
 
     for (let i = 0; i < selecao.length; i++) {
         if (id == selecao[i].id && password == selecao[i].password) {
@@ -21,7 +22,7 @@ async function logon(event) {
             enter(userType, nome);
             return;
         } else if (i == selecao.length - 1) {
-            alert('Seu login e/ou senha não estão corretos.\nTente novamente.');
+            alert("Seu login e/ou senha não estão corretos.\nTente novamente.");
         }
     }
 }
@@ -39,10 +40,10 @@ function nomeAluno(id) {
         });
 }
 
-// function logout() {
-//     if (localStorage.getItem('currentUser') !== '') {
-//         alert('Você saiu, ' + localStorage.getItem('currentUser'));
-//         window.location.href = 'index.html';
-//         localStorage.removeItem('currentUser');
-//     }
-// }
+function logout() {
+    if (localStorage.getItem("currentUser") !== "") {
+        alert("Você saiu, " + localStorage.getItem("currentUser"));
+        window.location.href = "index.html";
+        localStorage.removeItem("currentUser");
+    }
+}

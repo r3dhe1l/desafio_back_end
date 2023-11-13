@@ -4,10 +4,9 @@ window.onload = function () {
 
 function carregarTurmasMatriculadas() {
     const id_aluno = localStorage.getItem('currentUser');
+    console.log(id_aluno);
     fetch('/turmasdoaluno/' + id_aluno)
-        .then(response => {
-            response.json()
-        })
+        .then(response => response.json())
         .then(turmas => {
             const turmasLivres = document.getElementById('turmasLivres').getElementsByTagName('tbody')[0];
             turmasLivres.innerHTML = '';
@@ -40,13 +39,14 @@ function excluirAluno(id_turma, id_aluno) {
             'Content-Type': 'application/json'
         }
     })
-        .then((response) => {
-            response.text()
+        .then((response) => response.text())
+        .then((responseText) => {
+            alert('Resposta: ' + responseText);
         })
         .then(() => {
             carregarTurmasMatriculadas();
         })
         .catch((error) => {
-            console.error(error);
+            console.error('Error:', error);
         });
 };

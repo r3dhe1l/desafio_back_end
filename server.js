@@ -102,7 +102,7 @@ app.post('/inseriralunoturma', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
-               res.end('Inserido com sucesso');
+               res.end('{ "msg": "Inserido com sucesso" }');
             }
          });
       }
@@ -111,11 +111,12 @@ app.post('/inseriralunoturma', function (req, res) {
 
 app.post('/criarturma', function (req, res) {
    db.insertTurma(req.body, function (err, rs) {
+      console.log(req.body);
       if (err) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('Turma criada com sucesso');
+         res.end('{ "msg": "Turma criada" }');
       }
    });
 });
@@ -126,7 +127,7 @@ app.delete('/deletarturma/:tid', function (req, res) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('Turma deletada com sucesso');
+         res.end('{ "msg": "Turma deletada" }');
       }
    });
 });
@@ -141,6 +142,7 @@ app.delete('/deletaralunodaturma/:tid/:aid', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
+               res.end('{ "msg": "Aluno deletado da turma" }');
             }
          });
       }
@@ -152,6 +154,6 @@ var server = app.listen(3000, function () {
    var host = server.address().address;
    var port = server.address().port;
 
-   console.log('Example app listening at http://%s:%s', host, port);
+   console.log(`Example app listening at http://%s:%s`, host, port);
 
 });
