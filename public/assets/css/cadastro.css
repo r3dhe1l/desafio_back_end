@@ -1,75 +1,157 @@
-* {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
+/* Reset CSS */
+.meta {
+    box-sizing: border-box;
 }
 
-.formRow {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    margin: 1em;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2em;
-    color: #27348B;
-}
-
-#logo {
-    float: right;
-    pointer-events: none;
-    user-select: none;
-}
-
-h2 {
-    margin: 1em;
-    color: #2D9CDB;
-}
-
-* {
-    color: rgb(128, 128, 128);
-}
-
-input {
-    line-height: 1;
-    height: 2em;
-}
-
-label {
-    margin-bottom: 0.2em;
-}
-
+/**
+ * Global Styles
+ */
 body {
-    margin: 2em;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+    background-color: #fff;
+    height: 100%;
 }
 
+/**
+ * Heading Styles
+ */
+h2 {
+    margin: 0.5em 0;
+    color: #000000;
+}
+
+/**
+ * Layout Styles
+ */
+.principal {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "cabecalho" "secao" "rodape";
+    min-height: 100vh;
+    justify-content: center;
+}
+
+/* Header Styles */
+header {
+    background-color: #ff8d46;
+    padding: 1em;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#tabelaTurmas {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Section Styles */
+.backgroundContainer {
+    background-color: #ff8d46;
+    padding: 1em;
+}
+
+/* Form Container Styles */
+.mainContainer {
+    background-image: url(../images/emil-widlund-xrbbXIXAWY0-unsplash@2x.png);
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin: auto;
+}
+
+/* Form Wrapper Styles */
+.formWrapper {
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 1em;
+    place-content: center;
+}
+
+/* Table Wrapper Styles */
+.tableWrapper {
+    display: grid;
+    grid-template-rows: repeat(1, auto);
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 1em;
+    place-content: center;
+}
+
+/* Form Styles */
+form {
+    display: grid;
+    grid-template-rows: repeat(2, auto) 1fr;
+    gap: 1em;
+    align-items: center;
+}
+
+/* Label Styles */
+label {
+    margin-bottom: 0.5em;
+    background-color: #a93a01;
+    color: #fff;
+    padding: 0.3em 0.5em;
+    border-radius: 5px;
+}
+
+/* Input and Select Styles */
+select,
+input {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+}
+
+/* Last Child of Form Styles */
+form :last-child {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Button Styles */
 button {
     background-color: #27348B;
-    border: 1pt solid #27348B;
-    font-size: 1em;
-    border-radius: 3px;
+    border: none;
     color: white;
     cursor: pointer;
     font-weight: bold;
-    height: 2.5em;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 1em;
 }
 
-tr,
-th,
-td {
-    border: 1pt solid rgb(128, 128, 128);
-    padding: 3px;
-    font-size: 0.9em;
-}
-
-table {
-    border-collapse: collapse;
-}
-
-#main {
+/* Footer Styles */
+footer {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff8d46;
+    padding: 1em;
 }
-
