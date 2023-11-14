@@ -1,9 +1,12 @@
+// Este bloco de código é executado quando a página é totalmente carregada
 window.onload = function () {
+    // Faz uma requisição assíncrona para obter a lista de disciplinas
     fetch('/disciplinas')
-        .then(response => response.json())
+        .then(response => response.json()) // Converte a resposta para JSON
         .then(disciplinas => {
-            const select = document.getElementById('disciplinas');
+            const select = document.getElementById('disciplinas'); // Obtém o elemento select das disciplinas
             disciplinas.forEach(disciplina => {
+                // Para cada disciplina, cria uma opção e a adiciona ao select
                 const option = document.createElement('option');
                 option.value = disciplina.id_disciplina;
                 option.text = disciplina.nome_disciplina;
@@ -12,11 +15,13 @@ window.onload = function () {
         })
         .catch(error => console.error('Error:', error));
 
+    // Faz uma requisição assíncrona para obter a lista de professores
     fetch('/professores')
-        .then(response => response.json())
+        .then(response => response.json()) // Converte a resposta para JSON
         .then(professores => {
-            const select = document.getElementById('professores');
+            const select = document.getElementById('professores'); // Obtém o elemento select dos professores
             professores.forEach(professor => {
+                // Para cada professor, cria uma opção e a adiciona ao select
                 const option = document.createElement('option');
                 option.value = professor.id_prof;
                 option.text = professor.nome_prof + " " + professor.sobrenome_prof;
@@ -26,7 +31,9 @@ window.onload = function () {
         .catch(error => console.error('Error:', error));
 };
 
+// Função para criar uma turma
 function criarTurma() {
+    // Cria um objeto turma com os dados fornecidos pelo usuário
     const turma = {
         id_turma: Math.floor(Math.random() * 1000000),
         id_disciplina: document.getElementById('disciplinas').value,
@@ -36,6 +43,7 @@ function criarTurma() {
         limite_vagas: document.getElementById('vagas').value
     };
 
+    // Envia uma requisição assíncrona para criar a turma no servidor
     fetch('/criarturma', {
         method: 'POST',
         headers: {
@@ -44,13 +52,13 @@ function criarTurma() {
         },
         body: JSON.stringify(turma),
     })
-        .then(response => response.json())
+        .then(response => response.json()) // Converte a resposta para JSON
         .then(data => {
-            alert('Turma Criada');
-            console.log('Success:', data);
-            window.location.reload();
+            alert('Turma Criada'); // Exibe um alerta informando que a turma foi criada com sucesso
+            console.log('Success:', data); // Exibe no console os dados retornados pelo servidor
+            window.location.reload(); // Recarrega a página para exibir as atualizações
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Error:', error); // Exibe no console caso ocorra algum erro na requisição
         });
 }
