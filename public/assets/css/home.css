@@ -1,25 +1,28 @@
+/* Define altura total e remove margens e preenchimentos padrão */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Section Styles */
+/* Estilos da seção principal */
 .backgroundContainer {
-    min-height: 100%;
+    min-height: 100%; /* Garante que a seção tenha pelo menos 100% da altura da tela */
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../images/emil-widlund-xrbbXIXAWY0-unsplash@2x.png) center/cover;
+    background: url(../images/emil-widlund-xrbbXIXAWY0-unsplash@2x.png) center/cover; /* Imagem de fundo centrada e cobrindo */
 }
 
+/* Estilos do contêiner principal */
 .mainContainer {
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 1em;
-    margin: auto;
+    margin: auto; /* Centraliza o contêiner na tela */
 }
 
+/* Estilos do contêiner modal */
 #modalContainer {
     display: flex;
     width: 433px;
@@ -32,6 +35,7 @@ html, body {
     justify-content: center;
 }
 
+/* Estilos do campo de entrada de login */
 .loginInput {
     display: flex;
     justify-content: space-around;
@@ -45,14 +49,17 @@ html, body {
     color: #868e96;
 }
 
+/* Estilos do campo de ID com ícone */
 #id {
     background: url(../images/Grupo37.svg) no-repeat padding-box #f1f3f5 20rem;
 }
 
+/* Estilos do campo de senha com ícone */
 #password {
     background: url(../images/Grupo36.svg) no-repeat padding-box #f1f3f5 20rem;
 }
 
+/* Estilos do link "Esqueceu a senha" */
 #forgot a {
     display: flex;
     align-content: flex-start;
@@ -63,6 +70,7 @@ html, body {
     font-weight: 700;
 }
 
+/* Estilos do botão de login */
 #login {
     background: #ffc501;
     border: transparent;

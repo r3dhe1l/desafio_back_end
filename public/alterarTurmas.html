@@ -4,40 +4,55 @@
 <head>
     <meta charset="UTF-8">
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen"/>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/Vector1DesenhoBonito.png">
 
 
     <title>Cadastro Turma</title>
 </head>
-
 <body>
-<header>
-    <img id="logo" src="./assets/images/Vector1DesenhoBonito.png" width="61" alt="desenho bonitinho">
-    <h2>Alterar Turmas</h2>
-    <nav>
-        <ul>
-            <li><a href="homeAluno.html">Turmas Disponíveis</a></li>
-            <li><a href="alterarTurmas.html">Alterar Turmas</a></li>
-        </ul>
-    </nav>
-</header>
+<div class="principal">
 
-<table id="turmasLivres">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Disciplina</th>
-        <th>Professor</th>
-        <th>Dia</th>
-        <th>Turno</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-
+    <header>
+        <h2>Desmatricular</h2>
+        <nav>
+            <ul>
+                <li><a href="homeAluno.html">Turmas Disponíveis</a></li>
+                <li><a href="alterarTurmas.html">Alterar Turmas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="backgroundContainer">
+        <div class="mainContainer">
+            <div class="tableWrapper">
+                <table id="turmasLivres">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Disciplina</th>
+                        <th>Professor</th>
+                        <th>Dia</th>
+                        <th>Turno</th>
+                        <th>Vagas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table content goes here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Programação Back-end (GR96004-00064) - Grupo 4
+            <br>
+            Desenvolvido por:
+            <br>
+            Guilherme Tomesz Flores | Matheus Stein Schmidel | Luiza Sebalhos Difante | Cezar Eduardo Favin Milani |
+            Stephanie Klamt de Oliveira</p>
+        <p></p>
+    </footer>
+</div>
 </body>
-
 <script src="./funcoesAlterarTurmas.js"></script>
-
 </html>

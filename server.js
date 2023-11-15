@@ -42,8 +42,8 @@ app.get('/turmas', function (req, res) {
    });
 });
 
-app.get('/turmascomvaga', function (req, res) {
-   db.getTurmasComVaga(function (err, rows) {
+app.get('/turmascomvaga/:aid', function (req, res) {
+   db.getTurmasComVaga(req.params.aid, function (err, rows) {
       if (err) {
          res.json(err);
       } else {
@@ -72,6 +72,16 @@ app.get('/alunosforaturma/:tid', function (req, res) {
    });
 });
 
+app.get('/turmasdoaluno/:aid', function (req, res) {
+   db.getTurmasDoAluno(req.params.aid, function (err, rows) {
+      if (err) {
+         res.json(err);
+      } else {
+         res.json(rows);
+      }
+   });
+});
+
 app.get('/nomealuno/:aid', function (req, res) {
    db.getNomeAluno(req.params.aid, function (err, rows) {
       if (err) {
@@ -92,7 +102,7 @@ app.post('/inseriralunoturma', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
-               res.end('{ "msg": "Inserido com sucesso" }');
+               res.end('');
             }
          });
       }
@@ -101,12 +111,11 @@ app.post('/inseriralunoturma', function (req, res) {
 
 app.post('/criarturma', function (req, res) {
    db.insertTurma(req.body, function (err, rs) {
-      console.log(req.body);
       if (err) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('{ "msg": "Turma criada" }');
+         res.end('');
       }
    });
 });
@@ -117,7 +126,7 @@ app.delete('/deletarturma/:tid', function (req, res) {
          res.json(err);
       } else {
          res.writeHead(200, { 'Content-Type': 'application/json' });
-         res.end('{ "msg": "Turma deletada" }');
+         res.end('');
       }
    });
 });
@@ -132,7 +141,7 @@ app.delete('/deletaralunodaturma/:tid/:aid', function (req, res) {
                res.json(err);
             } else {
                res.writeHead(200, { 'Content-Type': 'application/json' });
-               res.end('{ "msg": "Aluno deletado da turma" }');
+               res.end('');
             }
          });
       }
@@ -144,6 +153,6 @@ var server = app.listen(3000, function () {
    var host = server.address().address;
    var port = server.address().port;
 
-   console.log(`Example app listening at http://%s:%s`, host, port);
+   console.log('Example app listening at http://%s:%s', host, port);
 
 });

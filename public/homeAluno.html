@@ -1,115 +1,56 @@
-<html lang="EN">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./assets/css/cadastro.css" media="screen"/>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/Vector1DesenhoBonito.png">
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen"/>
-
-
-    <title>Cadastro Aluno</title>
+    <title>Manejar Turmas</title>
 </head>
-
 <body>
-<header>
-    <img id="logo" src="./assets/images/Vector1DesenhoBonito.png" width="61" alt="desenho bonitinho">
-    <h2>Cadastrar Aluno</h2>
-</header>
-<div id="main">
-    <section>
-        <article id="formAluno">
-            <div class="formRow">
-                <label>ID</label>
-                <input type="text" id="idAluno" placeholder="Digite o ID do aluno">
+<div class="principal">
+    <header>
+        <h2>Matricular</h2>
+        <nav>
+            <ul>
+                <li><a href="homeAluno.html">Turmas Disponíveis</a></li>
+                <li><a href="alterarTurmas.html">Alterar Turmas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="backgroundContainer">
+        <div class="mainContainer">
+            <div class="tableWrapper">
+                <table id="turmasLivres">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Disciplina</th>
+                        <th>Professor</th>
+                        <th>Dia</th>
+                        <th>Turno</th>
+                        <th>Vagas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Table content goes here -->
+                    </tbody>
+                </table>
             </div>
-            <div class="formRow">
-                <label>Nome</label>
-                <input type="text" id="nomeAluno" placeholder="Digite o nome do aluno">
-            </div>
-            <div class="formRow">
-                <label>Turma</label>
-                <input type="text" id="turmaAluno" placeholder="Digite a turma do aluno">
-            </div>
-            <div class="formRow">
-                <label>Turno</label>
-                <input type="text" id="turnoAluno" placeholder="Informe o turno do aluno">
-            </div>
-            <div class="formRow">
-                <button onclick="salvarAluno()">Salvar</button>
-            </div>
-        </article>
-    </section>
-    <section id="lista">
-        <button onclick="carregarDadosAluno()">Carregar dados</button>
-        <table id="registros">
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Turma</th>
-                <th>Turno</th>
-            </tr>
-        </table>
-    </section>
+        </div>
+    </div>
+    <footer>
+        <p>Programação Back-end (GR96004-00064) - Grupo 4
+            <br>
+            Desenvolvido por:
+            <br>
+            Guilherme Tomesz Flores | Matheus Stein Schmidel | Luiza Sebalhos Difante | Cezar Eduardo Favin Milani |
+            Stephanie Klamt de Oliveira</p>
+        <p></p>
+    </footer>
 </div>
-<script>
-    function carregarDadosAluno() {
-        const myRequest = new Request('http://localhost:3000/alunos');
-        fetch(myRequest)
-            .then(response => {
-                if (response.status === 200) {
-                    return response.json();
-                } else {
-                    throw new Error('Ops! Houve um erro em nosso servidor.');
-                }
-            })
-            .then(response => {
-                recuperarDadosAluno(response);
-            }).catch(error => {
-            console.error(error);
-        });
-    }
-
-    function recuperarDadosAluno(obj) {
-        const tabela = document.getElementById('registros');
-        tabela.innerHTML = ''
-            + '<th scope="col">ID</th>'
-            + '<th scope="col">Nome</th>'
-            + '<th scope="col">Turma</th>'
-            + '<th scope="col">Turno</th>';
-        for (let index = 0; index < obj.length; index++) {
-            const element = obj[index];
-            const tr = document.createElement('tr');
-            tr.innerHTML =
-                '<td>' + element.idAluno + '</td>'
-                + '<td>' + element.nomeAluno + '</td>'
-                + '<td>' + element.turmaAluno + '</td>'
-                + '<td>' + element.turnoAluno + '</td>';
-            tabela.appendChild(tr);
-        }
-
-    }
-
-    function salvarAluno() {
-
-        const aluno = {
-            id: document.getElementById('idAluno').value,
-            nome: document.getElementById('nomeAluno').value,
-            turma: document.getElementById('turmaAluno').value,
-            turno: document.getElementById('turnoAluno').value
-        }
-
-        fetch('http://localhost:3000/alunos', {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(aluno),
-        }).then((response) => response.text())
-            .then((responseText) => {
-                alert('Resposta back-end: ' + responseText);
-            });
-    }
-</script>
+<script src="./funcoesHomeAluno.js"></script>
 </body>
-
 </html>
