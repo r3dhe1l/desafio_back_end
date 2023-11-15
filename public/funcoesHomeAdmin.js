@@ -13,7 +13,7 @@ window.onload = function () {
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error(error));
 
     // Faz uma requisição assíncrona para obter a lista de professores
     fetch('/professores')
@@ -24,11 +24,11 @@ window.onload = function () {
                 // Para cada professor, cria uma opção e a adiciona ao select
                 const option = document.createElement('option');
                 option.value = professor.id_prof;
-                option.text = professor.nome_prof + " " + professor.sobrenome_prof;
+                option.text = professor.nome_prof + ' ' + professor.sobrenome_prof;
                 select.appendChild(option);
             });
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error(error));
 };
 
 // Função para criar uma turma
@@ -52,13 +52,13 @@ function criarTurma() {
         },
         body: JSON.stringify(turma),
     })
-        .then(response => response.json()) // Converte a resposta para JSON
-        .then(data => {
-            alert('Turma Criada'); // Exibe um alerta informando que a turma foi criada com sucesso
-            console.log('Success:', data); // Exibe no console os dados retornados pelo servidor
+
+        .then((response) => response.text()) // Converte a resposta para JSON
+        .then((responseText) => {
+            alert('Turma Criada' + responseText); // Exibe um alerta informando que a turma foi criada com sucesso
             window.location.reload(); // Recarrega a página para exibir as atualizações
         })
         .catch((error) => {
-            console.error('Error:', error); // Exibe no console caso ocorra algum erro na requisição
+            console.error(error); // Exibe no console caso ocorra algum erro na requisição
         });
 }

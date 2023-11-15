@@ -1,6 +1,7 @@
 /* Reset CSS */
 .meta {
     box-sizing: border-box;
+
 }
 
 *, *::before, *::after {
