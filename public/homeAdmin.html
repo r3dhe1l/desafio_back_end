@@ -1,62 +1,82 @@
 <!DOCTYPE html>
-<html lang="EN">
+
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-
-    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen" />
-
-
-    <title>Cadastro Turma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/assets/css/cadastro.css" media="screen"/>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/Vector1DesenhoBonito.png">
+    <title>Cadastrar Turmas</title>
 </head>
 
 <body>
+<div class="principal">
     <header>
-        <img id="logo" src="./assets/images/Vector1DesenhoBonito.png" width="61" alt="desenho bonitinho">
-        <h2>Cadastrar Turma</h2>
+        <h2>Home Turma</h2>
         <nav>
             <ul>
-                <li><a href="homeAdmin.html">Cadastrar Turma</a></li>
+                <li><a href="homeAdmin.html">Cadastrar Turmas</a></li>
                 <li><a href="editarTurmas.html">Editar Turmas</a></li>
             </ul>
         </nav>
     </header>
-
-    <div>
-        <select id="disciplinas"></select>
+    <div class="backgroundContainer">
+        <div class="mainContainer">
+            <div class="formWrapper">
+                <form id="formAdmin">
+                    <div>
+                        <label for="disciplinas">Disciplina</label>
+                        <select id="disciplinas">
+                            <option selected="selected" disabled hidden>Selecione a disciplina</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="professores">Professor</label>
+                        <select id="professores">
+                            <option selected="selected" disabled hidden>Selecione o professor</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="dias">Dia</label>
+                        <select id="dias">
+                            <option selected="selected" disabled hidden>Selecione o dia</option>
+                            <option value="segunda">Segunda-Feira</option>
+                            <option value="terca">Terça-Feira</option>
+                            <option value="quarta">Quarta-Feira</option>
+                            <option value="quinta">Quinta-Feira</option>
+                            <option value="sexta">Sexta-Feira</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="turnos">Turno</label>
+                        <select id="turnos">
+                            <option selected="selected" disabled hidden>Selecione o turno</option>
+                            <option value="manha">Manhã</option>
+                            <option value="tarde">Tarde</option>
+                            <option value="noite">Noite</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="vagas">Limite de vagas</label>
+                        <input inputmode="numeric" id="vagas" name="vagas" min="1" required>
+                    </div>
+                    <button onclick="criarTurma()">Criar Turma</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <br>
-    <div>
-        <select id="professores"></select>
-    </div>
-    <br>
-    <div>
-        <select id="dias">
-            <option value="segunda">Segunda-Feira</option>
-            <option value="terca">Terça-Feira</option>
-            <option value="quarta">Quarta-Feira</option>
-            <option value="quinta">Quinta-Feira</option>
-            <option value="sexta">Sexta-Feira</option>
-        </select>
-    </div>
-    <br>
-    <div>
-        <select id="turnos">
-            <option value="manha">Manhã</option>
-            <option value="tarde">Tarde</option>
-            <option value="noite">Noite</option>
-        </select>
-    </div>
-    <br>
-    <div>
-        <label for="vagas">Limite de vagas:</label>
-        <input type="number" id="vagas" name="vagas" min="1" required>
-    </div>
-    <br>
-    <button onclick="criarTurma()">Criar Turma</button>
-
-</body>
-
+    <footer>
+        <p>Programação Back-end (GR96004-00064) - Grupo 4
+            <br>
+            Desenvolvido por:
+            <br>
+            Guilherme Tomesz Flores | Matheus Stein Schmidel | Luiza Sebalhos Difante | Cezar Eduardo Favin Milani |
+            Stephanie Klamt de Oliveira</p>
+        <p></p>
+    </footer>
+</div>
 <script src="./funcoesHomeAdmin.js"></script>
+</body>
 
 </html>

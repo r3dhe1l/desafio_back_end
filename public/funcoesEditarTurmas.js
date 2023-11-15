@@ -36,7 +36,7 @@ function carregarTurmas() {
         .catch((error) => {
             console.error(error);
         });
-};
+}
 
 function mostrarAlunos(id_turma) {
     fetch('/alunosnaturma/' + id_turma)
@@ -76,7 +76,7 @@ function mostrarAlunos(id_turma) {
         .catch((error) => {
             console.error(error);
         });
-};
+}
 
 function excluirTurma(id_turma) {
     fetch('/alunosnaturma/' + id_turma)
@@ -107,7 +107,7 @@ function excluirTurma(id_turma) {
         .catch((error) => {
             console.error(error);
         });
-};
+}
 
 function excluirAluno(id_turma, id_aluno, reload = true) {
     fetch('/deletaralunodaturma/' + id_turma + '/' + id_aluno, {
@@ -132,7 +132,7 @@ function excluirAluno(id_turma, id_aluno, reload = true) {
         .catch((error) => {
             console.error(error);
         });
-};
+}
 
 function incluirAluno(id_turma, id_aluno) {
     const alunoTurma = {
@@ -159,7 +159,7 @@ function incluirAluno(id_turma, id_aluno) {
         .catch((error) => {
             console.error(error);
         });
-};
+}
 
 function alunosForaTurma(id_turma) {
     fetch('/alunosforaturma/' + id_turma)
@@ -179,8 +179,7 @@ function alunosForaTurma(id_turma) {
         .catch((error) => {
             console.error(error);
         });
-};
-
+}
 document.getElementById('confirmButton').addEventListener('click', function () {
     const id_aluno = document.getElementById('alunoSelect').value;
     const id_turma = this.dataset.turma;
